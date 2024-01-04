@@ -69,7 +69,7 @@ target_link_libraries(${PROJECT_NAME}
 
 # Set additional properties for Windows
 if(WIN32)
-    target_sources(${PROJECT_NAME} PRIVATE app.ico)
+    target_sources(${PROJECT_NAME} PRIVATE)
     set_target_properties(${PROJECT_NAME} PROPERTIES WIN32_EXECUTABLE TRUE)
 endif()
 

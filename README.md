@@ -79,15 +79,3 @@ void QtCamera::autoSelectDevice()
 }
 ```
 
-## 关于更多
-* 源码地址：
-```
-https://github.com/aeagean/QtCamera
-```
-* 文章首发公众号：**Qt君**  
-<p align="center">
-  <img src="http://www.qtbig.com/about/index/my_qrcode.jpg" alt="微信公众号:Qt君">
-  <p align="center"><em>Qt君</em></p>
-</p>
-
-* **后续**更新摄像头参数选择算法(自动匹配用户设置摄像头参数，**分辨率**，**帧率**，**格式**)。
