@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/resource/images">
+    <file>navLogo.png</file>
+  </qresource>
+</RCC>
+

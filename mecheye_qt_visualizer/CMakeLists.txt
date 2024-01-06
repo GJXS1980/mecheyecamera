@@ -19,6 +19,12 @@ else()
   set(QTX Qt6)
 endif()
 
+# 添加 .qrc 文件
+qt5_add_resources(QRC_FILES
+    mecheye_qt_visualizer.qrc
+)
+
+
 # Find PCL
 find_package(PCL REQUIRED)
 
@@ -62,6 +68,13 @@ add_definitions(${PCL_DEFINITIONS})
 
 set(project_SOURCES main.cpp pclviewer.cpp)
 
-add_executable(${PROJECT_NAME} ${project_SOURCES})
+
+add_executable(${PROJECT_NAME} ${project_SOURCES} ${QRC_FILES} )
 
 target_link_libraries(${PROJECT_NAME} ${PCL_LIBRARIES} ${QTX}::Widgets ${MECHEYEAPI_LIBRARIES} ${OpenCV_LIBS})
+
+# 设置启动时的环境变量
+set_target_properties(${PROJECT_NAME} PROPERTIES
+    ENVIRONMENT "QT_OPENGL=software"
+)
+

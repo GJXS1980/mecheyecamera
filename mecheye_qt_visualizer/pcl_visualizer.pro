@@ -1,34 +1,30 @@
-#-------------------------------------------------
-#
-# Project created by QtCreator 2014-05-01T14:24:33
-#
-#-------------------------------------------------
+QT += concurrent opengl widgets
 
-QT       += core gui
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
-TARGET = pcl_visualizer
+TARGET = mecheye_qt_visualizer
 TEMPLATE = app
 
-# Specify the VTK module
-CONFIG += vtk
+# Find PCL
+CONFIG += link_pkgconfig
+PCL_DIR = /usr/local/pcl-1.14
 
-# Specify include paths for VTK headers
-INCLUDEPATH += /usr/local/vtk-8.2/include/vtk-8.2 \
-               /usr/local/pcl-1.14/include/pcl-1.13
-
-# Specify library paths for PCL libraries
-LIBS += -L/usr/local/pcl-1.14/lib
-        # Add other PCL libraries as needed
+INCLUDEPATH += $$PCL_DIR/include/pcl-1.13 \
+               /usr/local/include/opencv4 \
+               /opt/mech-mind/mech-eye-sdk/include \
+               /usr/local/vtk-8.2/include/vtk-8.2
 
 
-# Specify library paths for VTK libraries
-LIBS += -L/usr/local/vtk-8.2/lib
+LIBS += -L$$PCL_DIR/lib \
+        -L/usr/local/lib \
+        -L/opt/mech-mind/mech-eye-sdk/lib \
+        -L/usr/local/vtk-8.2/lib
 
-SOURCES += main.cpp\
-        pclviewer.cpp
+# Include directories
+INCLUDEPATH += $$MECHEYEAPI_CFLAGS $$PCL_CFLAGS $$OpenCV_CFLAGS $$VTK_CFLAGS
 
-HEADERS  += pclviewer.h
+# Library directories
+LIBS += $$MECHEYEAPI_LIBS $$PCL_LIBS $$OpenCV_LIBS $$VTK_LIBS
 
-FORMS    += pclviewer.ui
+
+
+# Source files
+SOURCES += main.cpp pclviewer.cpp
